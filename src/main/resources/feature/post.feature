@@ -38,3 +38,11 @@ Feature: Post API
     * method post
     * match responseStatus == 201
     * match response == { "name": "morpheus", "job": "unemployed", "id": "#string", "createdAt": "#ignore"}
+
+  Scenario: Post changed user from json file by where condition
+    * path '/api/users'
+    * request expectedInput
+    * set expectedInput.job = "unemployed"
+    * method post
+    * match responseStatus == 201
+    * match response.job == "unemployed"
